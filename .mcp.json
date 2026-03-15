@@ -1,0 +1,106 @@
+{
+  "mcpServers": {
+    "gdrive": {
+      "type": "url",
+      "url": "https://drive.mcp.claude.com/mcp",
+      "name": "Google Drive",
+      "description": "Access research notes, watchlists, and documents in Google Drive"
+    },
+    "gmail": {
+      "type": "url",
+      "url": "https://gmail.mcp.claude.com/mcp",
+      "name": "Gmail",
+      "description": "Access newsletters, research threads, and deal flow emails"
+    },
+    "gcal": {
+      "type": "url",
+      "url": "https://gcal.mcp.claude.com/mcp",
+      "name": "Google Calendar",
+      "description": "Schedule research milestones and follow-up reminders"
+    },
+    "notion": {
+      "type": "url",
+      "url": "https://notion.mcp.claude.com/mcp",
+      "name": "Notion",
+      "description": "Access Notion workspace for notes, research databases, and watchlists"
+    },
+    "slack": {
+      "type": "url",
+      "url": "https://slack.mcp.claude.com/mcp",
+      "name": "Slack",
+      "description": "Search Slack for shared research, articles, and team discussions"
+    },
+    "onedrive": {
+      "type": "url",
+      "url": "https://onedrive.mcp.claude.com/mcp",
+      "name": "OneDrive / SharePoint",
+      "description": "Access research files in Microsoft OneDrive or SharePoint"
+    },
+    "dropbox": {
+      "type": "url",
+      "url": "https://dropbox.mcp.claude.com/mcp",
+      "name": "Dropbox",
+      "description": "Access research notes and documents in Dropbox"
+    },
+    "box": {
+      "type": "url",
+      "url": "https://box.mcp.claude.com/mcp",
+      "name": "Box",
+      "description": "Access enterprise documents and research files in Box"
+    },
+    "airtable": {
+      "type": "url",
+      "url": "https://airtable.mcp.claude.com/mcp",
+      "name": "Airtable",
+      "description": "Access structured research databases and tracking tables"
+    },
+    "confluence": {
+      "type": "url",
+      "url": "https://confluence.mcp.atlassian.com/mcp",
+      "name": "Confluence",
+      "description": "Access team knowledge bases and research wikis"
+    },
+    "jira": {
+      "type": "url",
+      "url": "https://jira.mcp.atlassian.com/mcp",
+      "name": "Jira",
+      "description": "Track research action items and milestone follow-ups"
+    },
+    "asana": {
+      "type": "url",
+      "url": "https://app.asana.com/api/mcp",
+      "name": "Asana",
+      "description": "Track research tasks and milestone reminders"
+    },
+    "linear": {
+      "type": "url",
+      "url": "https://linear.mcp.claude.com/mcp",
+      "name": "Linear",
+      "description": "Track research tasks and follow-up actions"
+    },
+    "github": {
+      "type": "url",
+      "url": "https://github.mcp.claude.com/mcp",
+      "name": "GitHub",
+      "description": "Assess technical activity and depth of companies being researched"
+    },
+    "hubspot": {
+      "type": "url",
+      "url": "https://mcp.hubspot.com/mcp",
+      "name": "HubSpot",
+      "description": "Access company and contact intelligence for value chain research"
+    },
+    "salesforce": {
+      "type": "url",
+      "url": "https://mcp.salesforce.com/mcp",
+      "name": "Salesforce",
+      "description": "Access CRM data and company intelligence"
+    },
+    "zapier": {
+      "type": "url",
+      "url": "https://zapier.mcp.claude.com/mcp",
+      "name": "Zapier",
+      "description": "Trigger automations — save research notes, send milestone alerts"
+    }
+  }
+}
