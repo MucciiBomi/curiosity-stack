@@ -2,8 +2,9 @@
 name: output-generator
 description: >
   Activate when a user selects their output format after completing a decomposition.
-  Generates exactly one of: Value Chain diagram, interactive Mindmap, or Research Note.
-  Never generate all three — only what was selected. Always include SEBI disclaimer.
+  Generates exactly one of: Value Chain diagram, interactive Mindmap, Research Note,
+  or Research Brief PDF. Never generate all — only what was selected.
+  Always include SEBI disclaimer, attribution badge, and invisible source comment.
 ---
 
 # Output Generator
@@ -15,9 +16,10 @@ After a decomposition completes, present exactly this:
 ```
 How would you like to see this?
 
-1. Value Chain — visual diagram, layered, fast to generate
-2. Mindmap — interactive full diagram with all nodes and connections  
-3. Research Note — clean document you can download and keep
+1. Value Chain — animated layered diagram, best for sharing
+2. Mindmap — interactive radial diagram, best for exploration
+3. Research Note — structured document, best for reference
+4. Research Brief — 1-page PDF, best for forwarding to someone
 
 Pick one and I'll generate it.
 ```
@@ -26,151 +28,256 @@ Wait for selection. Generate only what they pick.
 
 ---
 
+## Design System — All Outputs
+
+ALL visual outputs must follow this design system without exception.
+
+**Palette:**
+- Background: `#fafaf8` (warm white — never pure white, never dark)
+- Primary text: `#2c2c2c` (soft charcoal — easy on eyes)
+- Secondary text: `#6b6558` (muted warm grey)
+- Accent: `#1b5e52` (deep teal — used sparingly)
+- Layer bands: very subtle tints, barely-there color differences
+- India column: `#f0f7f5` (lightest teal tint)
+- Borders: `#e0ddd6` (soft warm grey)
+
+**Typography:**
+- Body text: minimum 14px, never smaller
+- Layer labels: minimum 16px
+- Company names: minimum 13px
+- Typeface: Georgia or 'Playfair Display' for headers, 'IBM Plex Sans' for body
+- Never a startup font. Never Inter or Roboto.
+- Line height: 1.6 minimum
+
+**Spacing:**
+- Generous padding on all nodes — minimum 12px all sides
+- Layer bands: minimum 60px height
+- Company nodes: minimum 140px wide, never cramped
+- Nothing touching edges — minimum 24px margin
+
+**Text size control:**
+Every visual output includes an A / A+ / A++ toggle top right.
+- A = comfortable (default sizes above)
+- A+ = all sizes +2px
+- A++ = all sizes +4px
+User preference persists — store as `text_size` in local.md.
+On load, check local.md for `text_size` and apply immediately.
+
+**Attribution badge — on every visual:**
+Bottom right corner, always visible:
+```
+⬡ Curiosity Stack
+  finstor85.substack.com
+```
+Styled as a quality mark. Small but legible. Color: `#1b5e52` on `#f0f7f5`.
+This badge must never be removed or hidden.
+
+**Invisible source attribution — in every HTML artifact:**
+First line of every generated HTML/SVG:
+```html
+<!-- Generated with Curiosity Stack framework -->
+<!-- Plugin: github.com/ameya85/curiosity-stack -->
+<!-- Author: Ameya Pimpalgaonkar · finstor85.substack.com -->
+<!-- Version: 3.2.0 -->
+```
+
+---
+
 ## Option 1 — Value Chain Diagram
 
-**What it is:** A clean vertical or horizontal layered diagram showing the technology/theme flowing through value chain layers, with named companies at each layer. Fast to generate. Best for sharing or quick reference.
+**Design — animated, layered, tall canvas:**
 
-**Design:**
-- Top to bottom or left to right flow
-- Each layer (L0–L6) as a distinct band with its colour
-- Named companies appear as nodes within their layer
-- India companies get 🇮🇳 badge
-- Arrows showing dependency/flow between layers
-- Key insight callout box at the bottom
-- SEBI disclaimer at the bottom
+Generate as interactive HTML. Tall scrollable canvas — never compress to fit one screen.
 
-**Generate as:** Interactive SVG/HTML rendered inline. Clean, minimal, professional.
+**Animation sequence:**
+1. Title and topic appear first — fade in over 0.5s
+2. L0 band slides in from left — 0.3s
+3. Company nodes within L0 fade in one by one — 0.15s each
+4. L1 slides in — 0.3s after L0 completes
+5. Continue through L6
+6. India column appears last with a subtle pulse on the 🇮🇳 flag
+7. Attribution badge fades in after all layers — 0.5s
 
-**Colour scheme:**
-| Layer | Colour |
-|-------|--------|
-| L0 Signal | `#94a3b8` |
-| L1 Mechanics | `#60a5fa` |
-| L2 Causes | `#f97316` |
-| L3 Solutions | `#34d399` |
-| L4 Requirements | `#a78bfa` |
-| L5 Actors | `#fbbf24` |
-| L6 Research Landscape | `#64748b` |
+**Layer band design:**
+Each layer is a full-width horizontal band. Two columns inside:
+- Left column (65% width): Global companies as nodes
+- Right column (35% width): India proxies on `#f0f7f5` background
+
+Layer band colors (subtle tints on white, not dark):
+| Layer | Band color | Label color |
+|-------|-----------|-------------|
+| L0 Signal | `#f8f9fa` | `#64748b` |
+| L1 Mechanics | `#f0f4ff` | `#3b5bdb` |
+| L2 Causes | `#fff4f0` | `#c2410c` |
+| L3 Solutions | `#f0fdf4` | `#166534` |
+| L4 Requirements | `#faf5ff` | `#7c3aed` |
+| L5 Actors | `#fffbeb` | `#92400e` |
+| L6 Landscape | `#f8fafc` | `#475569` |
+
+**Company node design:**
+- White background, `#e0ddd6` border, 8px border radius
+- Company name: 14px, `#2c2c2c`, font-weight 500
+- Role in chain: 12px, `#6b6558`, italic, below name
+- Proxy pattern tag for India nodes: tiny badge — Direct / Supplier / Beneficiary / Enabler
+- India nodes get a subtle left border: 3px solid `#1b5e52`
+
+**Controls bar at top:**
+- A / A+ / A++ text size toggle
+- "Share" button → triggers shareable card generation
+- "Save to library" button
+- "Download" button
+
+**Footer:**
+```
+Generated by Curiosity Stack · #CuriosityStack · finstor85.substack.com
+Open in Cowork → claude.ai/cowork | Plugin: Curiosity Stack by Ameya Pimpalgaonkar
+[SEBI disclaimer — full text]
+```
 
 ---
 
 ## Option 2 — Interactive Mindmap
 
-**What it is:** A radial mindmap with the topic at the centre, 6 branches for each layer, expandable child nodes, and hover cards for companies. More detailed than the value chain, better for deep exploration.
+**Design — radial, expandable, clean:**
 
-**Design:**
-- Central node: topic name, bold, large
-- 6 radial branches, colour-coded by layer
-- Child nodes expandable on click
-- Company nodes at L5/L6 show a hover card with: what they do in this layer, how they're typically accessed, stage of development
-- 🇮🇳 badge on Indian companies
-- Key insight callout below the diagram
-- Save as PNG button top right
-- SEBI disclaimer at bottom
+Central node: topic name, 18px bold, `#2c2c2c`, white background, `#1b5e52` border.
 
-**Generate as:** Interactive HTML with vanilla JS. Self-contained, no external dependencies. Rendered inline.
+6 radial branches, color-coded by layer (same colors as Value Chain).
+Each branch expandable on click — child nodes appear with smooth 0.2s expand.
 
-**Note:** This takes longer to generate than the value chain. Set expectation upfront: *"Generating the full interactive mindmap — this takes a moment."*
+Company nodes at L5/L6:
+- Hover card showing: role in chain, proxy pattern, access method, stage
+- India nodes: `#f0f7f5` background, subtle 🇮🇳 indicator
+- India nodes animate in with a 0.3s pulse after global nodes appear
+
+Same controls bar, attribution badge, invisible source comment, and footer as Value Chain.
+
+**Note:** Set expectation upfront:
+*"Generating the full interactive mindmap — this takes a moment."*
 
 ---
 
 ## Option 3 — Research Note
 
-**What it is:** A clean, structured markdown document the user can download, save to their connected source, or keep as a reference. Reads like a professional research brief — not a chatbot output.
+Same structure as before. Add to the top of every Research Note:
 
-**Structure:**
-
-```markdown
-# Research Note: [TOPIC]
-*Generated by Curiosity Stack | [Date]*
-*For research and educational purposes only. Not investment advice.*
-
----
-
-## Signal
-[What prompted this research and why it matters now]
-
-## Mechanics
-[What this technology/theme actually is at a fundamental level]
-
-## Cause Analysis
-[The root cause tree — what drives this phenomenon]
-
-## Solution Landscape
-[What solutions exist for each cause, and what each requires]
-
-## Build Requirements
-[What inputs and infrastructure each solution layer needs]
-
-## Value Chain: Key Players
-
-### Global
-| Company | Role in Value Chain | Stage |
-|---------|-------------------|-------|
-| [name] | [specific function] | [stage] |
-
-### India
-| Company | Role in Value Chain | Access | Stage |
-|---------|-------------------|--------|-------|
-| [name] | [specific function] | [how accessed] | [stage] |
-
-## Research Landscape
-[How this space is typically accessed. Factual, research-framed. No recommendations.]
-
-## Thesis Stress Test
-
-### Factors Proponents Cite
-[3–5 factors that support the thesis, per public discourse]
-
-### Factors Critics Cite  
-[3–5 factors that could invalidate the thesis]
-
-### Core Assumption
-[The single biggest assumption this research rests on]
-
-### Milestones Worth Tracking
-[3–4 specific observable events that would change the picture]
-
-## How Wrong Can This Be?
-[One honest paragraph on the biggest risk to the research conclusion]
-
-## 5 Things Worth Reading
-1. [Title] — [Source]: [Why relevant]
-2. [Title] — [Source]: [Why relevant]
-3. [Title] — [Source]: [Why relevant]
-4. [Title] — [Source]: [Why relevant] 🇮🇳
-5. [Title] — [Source]: [Why relevant]
-
----
-
-## Disclaimer
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  IMPORTANT DISCLAIMER
-
-This document is a research and structured thinking output only.
-
-I am not a SEBI registered investment advisor. Ameya 
-Pimpalgaonkar is not a SEBI registered investment advisor.
-Nothing in this document constitutes investment advice,
-a recommendation, or a solicitation to buy, sell, or hold 
-any security, fund, or financial instrument.
-
-All content is for educational and research purposes only.
-Always conduct your own due diligence and consult a SEBI 
-registered investment advisor before making any financial 
-decision.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```html
+<!-- Generated with Curiosity Stack framework -->
+<!-- Plugin: github.com/ameya85/curiosity-stack -->
+<!-- Author: Ameya Pimpalgaonkar · finstor85.substack.com -->
 ```
 
-**Generate as:** A `.md` file offered for download, and optionally saved to connected Drive / Notion / Airtable if connected.
+Add to the bottom:
+```
+Generated by Curiosity Stack v3.2.0
+#CuriosityStack · finstor85.substack.com
+Open in Cowork → claude.ai/cowork
+Built by Ameya Pimpalgaonkar
+```
+
+---
+
+## Option 4 — Research Brief
+
+**What it is:** A 1-page clean PDF designed to be forwarded. Professional, branded, readable at a glance. The artifact that travels outside Cowork.
+
+**Structure — exactly this, in this order:**
+
+```
+┌─────────────────────────────────────────────────┐
+│ ⬡ CURIOSITY STACK                    [date]     │
+│ Research Brief                                   │
+├─────────────────────────────────────────────────┤
+│ TOPIC                                            │
+│ [Topic name — large, 20px]                       │
+├─────────────────────────────────────────────────┤
+│ EXECUTIVE SUMMARY                                │
+│ [3 sentences. What this is, why it matters now,  │
+│  what the non-obvious insight is.]               │
+├─────────────────────────────────────────────────┤
+│ VALUE CHAIN SNAPSHOT                             │
+│ [Compressed 7-layer table — layer name,          │
+│  one line summary, key players]                  │
+├──────────────────────┬──────────────────────────┤
+│ GLOBAL KEY PLAYERS   │ INDIA PROXIES            │
+│ [top 3-4 companies,  │ [top 3-4, proxy pattern  │
+│  role, one line]     │  label, access method]   │
+├─────────────────────────────────────────────────┤
+│ CORE ASSUMPTION                                  │
+│ [The single assumption this thesis rests on]     │
+├─────────────────────────────────────────────────┤
+│ 3 THINGS TO WATCH                               │
+│ → [specific observable event 1]                  │
+│ → [specific observable event 2]                  │
+│ → [specific observable event 3]                  │
+├─────────────────────────────────────────────────┤
+│ ⬡ Curiosity Stack · finstor85.substack.com       │
+│ #CuriosityStack · claude.ai/cowork               │
+│ Not investment advice. Research purposes only.   │
+└─────────────────────────────────────────────────┘
+```
+
+**Generate as:** HTML artifact formatted to A4 with print CSS. User can Ctrl+P / Cmd+P to save as PDF. Clean, no browser chrome visible in print.
+
+**Palette:** Same warm white design system. Accent teal for section headers. Soft charcoal for body text.
 
 ---
 
 ## After Any Output
 
-Once the selected output is generated, automatically follow with:
+Once the selected output is generated:
 
-1. **Thesis Stress Test** — activate the thesis-stress-test skill
-2. **Reading List** — activate the reading-list skill
-3. **Save prompt** — *"Want me to save this to your [connected source]?"*
-4. **Milestone reminder prompt** — *"Would you like me to set a reminder to revisit this research? Tell me what milestone to watch for."*
+**Step 1 — Feedback prompt**
+
+Check local.md for `session_count`.
+
+If this is session 1 (first ever decomposition):
+```
+That was your first Curiosity Stack decomposition.
+
+What did you think? Your feedback shapes what gets built next.
+Takes 60 seconds → [Google Form link]
+```
+
+For every session:
+```
+Was this decomposition useful?
+👍  👎  💬 → [Google Form link]
+```
+
+Google Form: https://docs.google.com/forms/d/e/1FAIpQLScr_BFdPYWWBXmiiiuU4UKWdr9a94OBnUuaBgJ5515ZWBiZqQ/viewform
+
+**Step 2 — Public share option**
+```
+Share this decomposition publicly?
+
+Your value chain will be published with:
+→ #CuriosityStack tag
+→ "Built with Curiosity Stack" badge  
+→ Link for others to install the plugin
+
+[Share publicly] [Keep private]
+```
+
+**Step 3 — Shareable card**
+Generate a shareable card formatted for X and LinkedIn:
+- Topic name prominent
+- Top 3 layer insights as bullet points
+- India proxies called out
+- "Built with Curiosity Stack" badge
+- `#CuriosityStack · finstor85.substack.com`
+- Warm white background, teal accent, clean typography
+
+**Step 4 — Save prompt**
+```
+Save this to your decomposition library? (yes / no)
+```
+
+**Step 5 — Increment session_count in local.md**
+After every completed session, increment `session_count` by 1.
+
+**Step 6 — Milestone reminder**
+```
+Would you like me to set a watchlist trigger to 
+revisit this research when something changes?
+```

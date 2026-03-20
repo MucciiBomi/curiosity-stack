@@ -1,82 +1,107 @@
 ---
 name: thesis-stress-test
 description: >
-  Activate after a decomposition is complete, after any output is generated,
-  or when a user asks "what could go wrong", "stress test this", "other side of this",
-  "what are the risks", "what could invalidate this". Always apply SEBI compliance rules.
-  Never frame as bull/bear, never frame as recommendation.
+  Activate when user runs /curiosity-stack:stress-test or says "stress test this",
+  "challenge this thesis", "what could go wrong", "bull vs bear", or after a
+  decomposition output when user wants to pressure-test their conclusion.
 ---
 
 # Thesis Stress Test
 
 ## Purpose
 
-After identifying a research candidate through the Curiosity Stack, a rigorous thinker examines both the factors that could support a thesis and the factors that could invalidate it. This is not a recommendation for or against anything. It is a structured thinking exercise to stress-test the research before acting on it.
+A structured thinking exercise that examines a research thesis from both sides. Not a recommendation. A tool for rigorous independent thinking before committing to a research direction.
 
 ---
 
-## SEBI Compliance Note
+## Visual Layout
 
-This section must never:
-- Recommend buying or selling any security
-- Characterise anything as "a good investment" or "a bad investment"
-- Use language like "this will perform" or "this will underperform"
-- Use terms like "10x", "multibagger", "target price", or "upside"
+Generate as an interactive HTML artifact following the design system:
 
-This section must always:
-- Frame everything as factors to consider in one's own research
-- Include the standard disclaimer
-- Encourage the user to consult a SEBI registered investment advisor
+**Background:** `#fafaf8`
+**Layout:** Three-column visual
 
----
+```
+┌─────────────────┬──────────────────┬─────────────────┐
+│   PROPONENTS    │  CORE ASSUMPTION │    CRITICS      │
+│                 │                  │                 │
+│ [factors that   │ [the single      │ [factors that   │
+│  support the    │  assumption the  │  critics cite   │
+│  thesis]        │  thesis rests on]│  against it]    │
+│                 │                  │                 │
+│ • factor 1      │ "If X does not   │ • factor 1      │
+│ • factor 2      │  hold, the whole │ • factor 2      │
+│ • factor 3      │  thesis breaks"  │ • factor 3      │
+└─────────────────┴──────────────────┴─────────────────┘
 
-## Structure
+HOW WRONG CAN THIS BE?
+[One honest paragraph on the biggest risk]
 
-### Section 1 — Factors That Could Support This Thesis
+MILESTONES WORTH TRACKING
+→ [specific observable event 1]
+→ [specific observable event 2]
+→ [specific observable event 3]
+```
 
-*"If the thesis plays out, here are the structural factors that researchers and analysts who are positive on this space typically cite:"*
+**Animation:**
+- Proponents column slides in from left — 0.3s
+- Critics column slides in from right — 0.3s
+- Core assumption fades in centre — 0.5s after columns
+- "How wrong" section fades in last — 0.4s
 
-Present 3–5 factors. Each must be:
-- Grounded in observable business or market dynamics
-- Framed as "factors cited by proponents" — not as your view
-- Specific, not generic ("growing AI adoption" is too vague — "every LLM fine-tuning cycle requires fresh annotated domain data, creating recurring demand" is specific)
+**Color coding:**
+- Proponents header: `#166534` (dark green)
+- Critics header: `#9a3412` (dark red/amber)
+- Core assumption header: `#1b5e52` (teal)
+- Body text: `#2c2c2c` on `#fafaf8`
 
-### Section 2 — Factors That Could Invalidate This Thesis
+**Controls:** A / A+ / A++ text size toggle top right.
 
-*"Factors that researchers who are cautious on this space typically cite, and that are worth examining before concluding your research:"*
+**Attribution badge bottom right:** ⬡ Curiosity Stack
 
-Present 3–5 factors. Each must be:
-- A genuine structural or execution risk — not trivial
-- Framed as "factors worth examining" — not as a prediction
-- Honest. If the invalidation risk is serious, say so clearly.
+**Invisible source comment:** standard HTML comment block.
 
-### Section 3 — How Wrong Can This Be?
-
-*One honest paragraph.*
-
-This is the most important section. Write plainly about the single biggest assumption the thesis rests on — and what happens to the research conclusion if that assumption turns out to be wrong.
-
-Example framing:
-*"The core assumption here is that [X]. If [X] does not hold — for example if [scenario] — then the value chain layer identified at L4 looks significantly different. This is worth examining before drawing conclusions."*
-
-### Section 4 — What Would Change the Picture
-
-*"Milestones or developments that would make this research worth revisiting — in either direction:"*
-
-List 3–4 specific, observable events. Not vague ("market conditions improve") — specific ("key player files DRHP" / "major player announces India operations" / "regulatory enforcement begins").
-
----
-
-## Tone
-
-Direct and balanced. Neither optimistic nor pessimistic. The goal is not to make the user feel good or bad about the research — it is to make them think more carefully before they decide anything. That decision remains entirely theirs.
+**Footer:**
+```
+Generated by Curiosity Stack · #CuriosityStack · finstor85.substack.com
+Not investment advice. Research and educational purposes only.
+```
 
 ---
 
-## Closing
+## Content Guidelines
+
+**Proponents — what supporters cite:**
+3-5 structural factors. Cite actual data points, named organizations, observable trends where possible. Not vague generalities.
+
+**Critics — what critics cite:**
+3-5 factors. Give critics the strongest possible version of their argument. Do not strawman. If critics have a strong case, say so honestly.
+
+**Core assumption:**
+One sentence. The single assumption the entire thesis rests on. Preceded by: *"This thesis holds only if..."*
+
+**How wrong can this be:**
+One honest paragraph. Specific, not generic. Name the exact condition that would invalidate the thesis.
+
+**Milestones:**
+3-4 specific observable events with timeframes where possible.
+
+---
+
+## After Generating
+
+```
+Was this stress test useful?
+👍  👎  💬 → [Google Form link]
+
+⬡ Curiosity Stack · #CuriosityStack
+```
+
+Form: https://docs.google.com/forms/d/e/1FAIpQLScr_BFdPYWWBXmiiiuU4UKWdr9a94OBnUuaBgJ5515ZWBiZqQ/viewform
+
+---
+
+## Disclaimer
 
 Always end with:
-
-*"This stress test is a thinking exercise, not a conclusion. Use it to sharpen your own research — then verify independently and speak with a SEBI registered investment advisor before making any financial decision."*
-
-Followed by the full standard disclaimer.
+*"This stress test is a structured thinking exercise only. Not investment advice. I am not a SEBI registered investment advisor."*

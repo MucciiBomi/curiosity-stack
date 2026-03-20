@@ -4,7 +4,44 @@ All notable changes to the Curiosity Stack plugin are documented here.
 
 ---
 
-## [3.1.0] — 2026-03-13
+## [3.2.0] — 2026-03-20
+
+### Added
+- **Shareable output card** — generated after every Value Chain / Mindmap. Formatted for X and LinkedIn. `#CuriosityStack` tag baked in. Warm white design, teal accent, clean typography.
+- **Community signal** — `#CuriosityStack` hashtag on every card. Trackable via X search.
+- **Feedback — first session** — fires once after first decomposition. Google Form link.
+- **Feedback — every session** — after every output. 👍 👎 💬 + Google Form link.
+- **Public share option** — after every output, option to publish as public artifact with full branding and install link.
+- **Progressive layer cards** — mini visual summary card generated after L2, L4, and L6. Three natural pause points during the conversation. Individually shareable.
+- **Research Brief (Option 4)** — 1-page HTML/PDF output. Executive summary, value chain snapshot, key companies, core assumption, 3 things to watch. Branded. Forwardable.
+- **Animated Value Chain** — layer-by-layer build animation. Each layer slides in from left. Company nodes fade in. India proxies pulse on entrance.
+- **Animated Thesis Stress Test** — three-column visual layout. Proponents left, critics right, core assumption centre. Animated entrance.
+- **Invisible source attribution** — HTML comment block in every generated artifact. Plugin name, GitHub URL, author, version. Survives copy-paste.
+- **Visible quality badge** — `⬡ Curiosity Stack` badge on every visual output. Designed as quality mark not watermark.
+- **Branding on all outputs** — plugin name, author, `#CuriosityStack`, Substack URL, Cowork deep link on every artifact without exception.
+- **`session_count` tracking** — increments in local.md after every session. Used for feedback timing.
+
+### Changed
+- **`skills/output-generator/SKILL.md`** — complete rewrite. New design system (warm white palette, 14px minimum text, A/A+/A++ toggle). Four output options (added Research Brief). Attribution badge and invisible source comment on all outputs. Full feedback flow. Public share option. Shareable card generation.
+- **`skills/curiosity-framework/SKILL.md`** — progressive layer cards after L2, L4, L6. Research Brief added to output choice. `text_size` and `session_count` read from local.md.
+- **`skills/thesis-stress-test/SKILL.md`** — complete visual redesign. Three-column animated layout. New design system. Attribution badge and footer.
+- **`skills/watchlist-tracker/SKILL.md`** — local.md write constraint documented. Plugin now generates exact YAML block for user to paste. Attribution in digest. Cowork deep link in every email.
+- **`curiosity-stack.local.md`** — new fields: `text_size`, `session_count`.
+- **`plugin.json`** — version bumped to 3.2.0.
+
+### UI Design System (new — applies to all visual outputs)
+- Background: `#fafaf8` (warm white)
+- Primary text: `#2c2c2c` (soft charcoal)
+- Accent: `#1b5e52` (deep teal, used sparingly)
+- Body text minimum: 14px
+- Layer labels minimum: 16px
+- Company names minimum: 13px
+- Text size control: A / A+ / A++ toggle on every visual
+- No gradients, no neon, no dark drama
+
+---
+
+## [3.1.0] — 2026-03-15
 
 ### Added
 - **Decomposition Library** (`skills/decomposition-library/SKILL.md`) — saves every completed decomposition as a structured local file in `library/`. Topic, date, all 6 layer summaries, sources cited, tags, conviction placeholder. Retrieval: plugin checks library at start of new decomposition and asks if user wants to load a past session on the same topic. Optional mirror to Google Drive or Notion.

@@ -13,6 +13,7 @@ watchlist:
 deprioritise:
   -
 default_output:
+text_size: comfortable
 notes: |
 
 # ── Decomposition Library ─────────────────────────────────
@@ -20,6 +21,7 @@ notes: |
 library_save: ask
 library_mirror: local
 library_count: 0
+session_count: 0
 
 # ── Watchlist Monitoring ──────────────────────────────────
 
