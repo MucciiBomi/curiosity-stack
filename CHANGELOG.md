@@ -4,6 +4,41 @@ All notable changes to the Curiosity Stack plugin are documented here.
 
 ---
 
+## [3.2.3] — 2026-03-22
+
+### Fixed — Scenario library UX
+- **Start decomposition fires directly** — sendPrompt() is now the
+  primary action. Clicking "Start decomposition" sends the topic
+  directly into the chat. No copying, no pasting.
+- **Fallback with clear feedback** — if sendPrompt() is unavailable,
+  the button shows "✓ Prompt copied — paste into chat" for 3 seconds
+  so the user knows it worked.
+- **Removed "Copy prompt" as primary label** — button always says
+  "Start decomposition →". Copy behaviour is fallback only.
+- **Manual copy box** — if clipboard API also fails, a pre-filled
+  textarea appears for manual selection and copy.
+
+---
+
+## [3.2.2] — 2026-03-22
+
+### Fixed — Adoption and launch experience
+- **Welcome agent rewritten** — scenario library now renders automatically
+  on first launch as an interactive card grid. User clicks a topic and
+  the decomposition starts immediately. No commands needed on first session.
+- **Progressive disclosure** — commands no longer shown upfront. Each
+  feature surfaces contextually after relevant outputs:
+  - India Proxy Agent prompt appears after L5
+  - Save / Watchlist / Research Brief options appear after full decomposition
+  - Library prompt appears after 3+ sessions
+- **Setup is now optional** — first session works with defaults.
+  Setup prompt offered but never blocks the experience.
+- **Framework skill updated** — activates on any topic description,
+  not just explicit commands. Renders layer cards progressively.
+  Mini summary cards after L2 and L4.
+
+---
+
 ## [3.2.1] — 2026-03-21
 
 ### Added

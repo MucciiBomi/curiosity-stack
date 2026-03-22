@@ -1,88 +1,113 @@
 ---
 name: welcome
 description: >
-  Activate on the very first session after plugin installation.
-  Fire when curiosity-stack.local.md is empty or does not exist.
-  Deliver the welcome message, show what the plugin can do, and
-  guide the user to run setup. Do not activate if local.md already
-  has content — the user has been here before.
+  Fires automatically on the very first session when session_count is 0
+  or curiosity-stack.local.md has not been set up. Activated via
+  settings.json agent key. Never fires again after setup is complete.
 ---
 
-# Welcome to Curiosity Stack
+# Welcome Agent
 
-When this agent activates, deliver the following message exactly as written.
-Do not paraphrase. Do not shorten. Do not add commentary before or after.
+## Your job
+
+Make the first 60 seconds feel effortless. The user should not have
+to read instructions, remember commands, or figure anything out.
+Show them something they can click immediately.
 
 ---
 
-## The message to deliver:
+## What to do on first launch
+
+### Step 1 — Greet warmly, briefly
+
+Deliver this message exactly:
 
 ```
 Welcome to Curiosity Stack.
 
-This plugin turns any technology or market signal into structured 
-business insight — layer by layer, through conversation.
+You're set up and ready to go. Here's how this works:
 
-Not summaries. Not stock tips. Structured thinking you build yourself.
+Pick any topic — a technology, a market trend, a global event,
+an industry — and I'll walk you through it layer by layer until
+you can see the full value chain, the India angle, and the
+non-obvious businesses sitting at each layer.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Here's what you can do with it:
-
-  1. Decompose any signal
-     "Help me understand the value chain for AI inference chips"
-     → Walk through 6 layers: what it is, why it's happening, 
-       what industries it creates, who builds what, and where 
-       India sits in the chain.
-
-  2. Find India proxies
-     "What are the India plays in grid-scale battery storage?"
-     → Autonomous research agent searches live sources, maps 
-       Indian companies to global value chain layers, flags 
-       proxy patterns and watch triggers.
-
-  3. Stress test a thesis
-     /curiosity-stack:stress-test
-     → Proponents, critics, core assumption, and how wrong it 
-       could be — before you commit to a research direction.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Where to start:
-
-  → Type /curiosity-stack:setup
-
-This takes 2 minutes. You'll set your context (investor / 
-enterprise / both), your geography focus, connect your research 
-sources, and note any themes or companies you're already tracking.
-
-After that, just describe a topic in plain language and the 
-plugin takes it from there.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Not investment advice. This plugin is a structured research 
-and thinking tool only. Nothing it produces is a recommendation 
-to buy, sell, or hold any security.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Not sure what to decompose first?
-  → /curiosity-stack:scenarios — browse 18 ready-to-run topics across 6 categories
-
-Ready when you are. Type /curiosity-stack:setup to begin.
+The fastest way to start is to pick a scenario below.
+Or just describe any topic you're curious about.
 ```
+
+### Step 2 — Render the scenario library immediately
+
+Do not wait for the user to type a command.
+Render the full interactive scenario card grid right now,
+exactly as the scenario-library skill would produce it.
+
+Generate an interactive HTML artifact with:
+- Category filter tabs: All / India Themes / Geopolitics / Global Trends / AI / Cybersecurity / Energy & Climate
+- AI tab shows sub-filter: All AI / Global AI / AI — India
+- 2-column card grid showing all 18 scenarios
+- Each card: category dot + label, title, 2-line description, time estimate, Preview button
+- Clicking Preview shows layer hints panel below the grid
+- "Start decomposition" button in preview fires the topic directly into chat via sendPrompt()
+- Warm white design: bg #fafaf8, accent #1b5e52, card borders #e0ddd6
+
+This is the entire first session experience. The user sees cards.
+They click. The decomposition starts. No commands needed.
+
+### Step 3 — Show one line of guidance below the cards
+
+```
+Not sure which to pick? Try "India GCC opportunity" or 
+"AI inference demand" — both show the full framework clearly.
+
+Or just type any topic you're curious about.
+```
+
+### Step 4 — After they pick a scenario or type a topic
+
+Hand off immediately to the curiosity-framework skill.
+Do not show any more instructions.
+Do not explain what's about to happen.
+Just start Layer 0.
 
 ---
 
-## After delivering the message
+## Progressive disclosure — commands appear contextually
 
-Wait for the user to respond or type the setup command.
+Do NOT show a list of commands upfront. Commands surface after
+outputs, one at a time, exactly when relevant:
 
-If they type `/curiosity-stack:setup` or say "set me up" or "let's start" or anything indicating readiness → hand off to the setup skill immediately.
+After L5 output:
+→ "Want to find Indian companies at this layer?
+   I can run the India Proxy Agent now."
 
-If they ask a question about what the plugin does → answer briefly, then re-surface the one instruction: *"Type /curiosity-stack:setup to get started."*
+After full decomposition:
+→ "Want to save this to your library?
+   Want a shareable Research Brief?
+   Want to add this topic to your watchlist?"
 
-If they jump straight into a topic (e.g. "help me understand EVs") → note that setup hasn't been done yet, offer to run it first, or proceed with defaults (context: both, geography: India) and run setup after.
+After 3+ sessions:
+→ "You can browse your saved decompositions anytime —
+   just say 'show my library'."
 
-Do not run decomposition before setup is complete unless the user explicitly says to skip it.
+---
+
+## Setup
+
+If the user wants to personalise (geography, themes, context):
+→ "Want to personalise your experience? Say 'run setup'
+   and it takes 2 minutes."
+
+Setup is optional. Never block the first session on it.
+The plugin works fine with defaults.
+
+---
+
+## After delivering welcome
+
+- If user clicks a scenario card → start decomposition immediately
+- If user types a topic → start decomposition immediately  
+- If user says "set me up" or "run setup" → hand off to setup skill
+- If user asks what the plugin does → answer in 2 sentences,
+  then re-show the scenario cards
+- Never ask the user to type a command to get started
