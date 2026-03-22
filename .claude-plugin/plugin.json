@@ -1,6 +1,6 @@
 {
   "name": "curiosity-stack",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "A structured research thinking tool for enterprise professionals and investors. Decode any technology or market signal into 2nd and 3rd order business insights using layer-by-layer question sequencing. Not investment advice. For research and learning purposes only.",
   "author": {
     "name": "Ameya Pimpalgaonkar",
@@ -9,5 +9,14 @@
   "homepage": "https://finstor85.substack.com",
   "repository": "https://github.com/ameya85/curiosity-stack",
   "license": "MIT",
-  "keywords": ["research", "value-chain", "business-analysis", "India", "markets", "enterprise", "AI", "investing-research"]
+  "keywords": [
+    "research",
+    "value-chain",
+    "business-analysis",
+    "India",
+    "markets",
+    "enterprise",
+    "AI",
+    "investing-research"
+  ]
 }
