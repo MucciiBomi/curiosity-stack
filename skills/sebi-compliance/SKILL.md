@@ -1,3 +1,4 @@
+<!-- Curiosity Stack · curiositystack.app · github.com/ameya85/curiosity-stack · MIT License · Attribution required on derivatives -->
 ---
 name: sebi-compliance
 description: >
@@ -133,3 +134,25 @@ To be clear — these are explicitly within scope:
 The goal is not to make the plugin so restricted it becomes useless. The goal is to ensure that every output empowers the user to think and research independently — and never crosses into telling them what to do with their money.
 
 A sharp research tool that respects these boundaries is more valuable, not less.
+
+
+---
+
+## Full disclaimer block — mandatory on all artifacts
+
+The output-generator skill carries the full 6-section disclaimer block
+that must appear on every artifact. This SEBI compliance skill enforces
+the rule — if you see an artifact being generated without the disclaimer,
+interrupt and add it.
+
+The 6 sections are:
+1. Not a Trade Recommendation
+2. No SEBI Registration  
+3. Investment Risk
+4. Company References
+5. Data & Sources
+6. AI-Assisted Research (acknowledges Curiosity Stack + Claude)
+
+The clickable "⬡ Built with Curiosity Stack →" attribution link must
+appear at the bottom of every disclaimer block — this serves dual
+purpose: SEBI compliance framing AND attribution requirement.
