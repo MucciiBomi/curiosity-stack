@@ -1,3 +1,4 @@
+<!-- Curiosity Stack · curiositystack.app · github.com/ameya85/curiosity-stack · MIT License · Attribution required on derivatives -->
 ---
 name: watchlist-tracker
 description: >
@@ -203,3 +204,80 @@ watchlist_topics:
         condition: "[plain language condition]"
         last_fired: [date or never]
 ```
+
+
+---
+
+## Watchlist UI — mandatory display format
+
+Never show raw YAML to the user. Always render the watchlist as an
+interactive HTML artifact. YAML is generated silently in the background
+only when the user clicks "Generate YAML to save" or confirms changes.
+
+### When to render the watchlist UI
+
+- User says "show my watchlist" / "manage watchlist" / "open watchlist"
+- User runs /curiosity-stack:watchlist
+- User adds a topic — show the UI with the new topic expanded
+- User sets a trigger — show the UI with that trigger already added
+- After any watchlist change — re-render the UI to confirm the state
+
+### UI structure — two tabs
+
+**Tab 1 — Topics**
+Each topic is a collapsible card showing:
+- Topic name + category colour dot
+- Badge: trigger count (green if >0, grey if 0)
+- Badge: current cadence (Daily / Weekly / Fortnightly)
+- Expanded state shows:
+  - Active triggers list — each removable with ✕
+  - "Add a trigger" text input + Add button
+  - Cadence selector (segmented button: Daily / Weekly / Fortnightly)
+  - Save button → fires sendPrompt() to confirm + generates YAML
+  - Remove topic button
+
+**Tab 2 — Schedule & delivery**
+- Gmail connection status with live indicator dot
+- Day-of-week selector for digest delivery
+- Next scheduled run display
+- Trigger alert status (count of active triggers across all topics)
+- "Generate YAML to save →" button at bottom — only appears here,
+  not in the topic flow
+
+### Key interaction rules
+
+1. "Add topic" button → fires sendPrompt('Add a new topic to my watchlist')
+   Claude responds with topic confirmation, then re-renders the full UI
+   with the new topic expanded
+
+2. Adding a trigger inline → updates the UI immediately, no chat needed
+
+3. Save button → fires sendPrompt() to confirm, then shows "Saved ✓"
+   for 2.5 seconds. Also generates the YAML block silently.
+
+4. YAML is NEVER shown unless user explicitly clicks "Generate YAML to save"
+   on the Schedule tab. Even then, show it in a code block below the UI,
+   not instead of it.
+
+5. Removing a topic → removes the card immediately from UI, fires
+   sendPrompt() to confirm removal
+
+### Trigger alert flow (when a trigger fires)
+
+When the watchlist agent detects a trigger condition:
+- Send HIGH priority email digest immediately
+- Re-render watchlist UI showing which trigger fired with timestamp
+- Show badge: HIGH in red on the relevant topic card
+- Never show YAML — email is the delivery mechanism
+
+### Color coding for topic dots
+
+Use the same category colours as the scenario library:
+- India Themes: #1b5e52
+- Geopolitics: #993c1d
+- Global Trends: #185fa5
+- AI — Global: #533ab7
+- AI — India: #7c3aed
+- Cybersecurity: #3b6d11
+- Energy & Climate: #854f0b
+- Custom / other: #6b726a

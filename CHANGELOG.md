@@ -4,6 +4,60 @@ All notable changes to the Curiosity Stack plugin are documented here.
 
 ---
 
+## [3.2.6] — 2026-03-23
+
+### Added — Watchlist UI
+- **Interactive watchlist manager** — no more raw YAML shown to users.
+  Watchlist now renders as a clean two-tab HTML artifact:
+  - Topics tab: collapsible cards per topic, inline trigger add/remove,
+    cadence selector, save button with confirmation
+  - Schedule tab: Gmail status, day-of-week selector, next run display,
+    trigger alert count, YAML generator (last step, not first)
+- **Trigger flow** — add triggers inline without typing in chat.
+  UI updates immediately, YAML generated silently on save.
+- **YAML only on request** — raw YAML never shown during normal flow.
+  Only surfaced when user explicitly clicks "Generate YAML to save"
+
+---
+
+## [3.2.5] — 2026-03-23
+
+### Added — Full regulatory disclaimer on all artifacts
+- **6-section disclaimer block** adapted from best-in-class community
+  output. Every artifact now carries:
+  1. Not a Trade Recommendation
+  2. No SEBI Registration
+  3. Investment Risk
+  4. Company References (names companies for analysis only)
+  5. Data & Sources
+  6. AI-Assisted Research (acknowledges Curiosity Stack + Claude)
+- **Personalised** — replaces [USER NAME] with local.md value if set
+- **Non-India variant** — replaces SEBI-specific language for
+  non-India geography users
+- **Dual purpose** — SEBI compliance + attribution in one block.
+  The clickable "⬡ Built with Curiosity Stack →" link at the bottom
+  satisfies both requirements simultaneously.
+
+---
+
+## [3.2.4] — 2026-03-23
+
+### Fixed
+- **Clickable next actions** — post-decomposition action menu items
+  now fire directly into chat via sendPrompt(). Each action (generate
+  value chain, save to library, add to watchlist, stress test, continue)
+  triggers immediately on click. Copy-with-feedback fallback if
+  sendPrompt() unavailable.
+
+### Added
+- **ATTRIBUTION.md** — dedicated attribution requirements file in
+  repo root. Makes fork attribution requirements explicit and clear.
+- **Attribution headers** — every skill file now carries a header
+  comment: curiositystack.app URL, GitHub link, MIT license notice.
+  Hard to strip accidentally on forks.
+
+---
+
 ## [3.2.3] — 2026-03-22
 
 ### Fixed — Scenario library UX

@@ -243,3 +243,21 @@ Built by [Ameya Pimpalgaonkar](https://finstor85.substack.com).
 ---
 
 *MIT License · v3.1.0*
+
+---
+
+## Attribution
+
+Curiosity Stack is MIT licensed — free to fork, modify, and build upon.
+
+**If you fork or build on this plugin, you must:**
+1. Keep the `LICENSE` file intact
+2. Include a **clickable** credit link on every output: `Built with Curiosity Stack → curiositystack.app`
+3. Credit the original in your README (see `ATTRIBUTION.md`)
+
+A non-clickable text mention is not sufficient. See [`ATTRIBUTION.md`](./ATTRIBUTION.md) for full requirements.
+
+**Original framework by Ameya Pimpalgaonkar**
+→ [curiositystack.app](https://curiositystack.app) · [@Finstor85](https://x.com/Finstor85) · [GitHub](https://github.com/ameya85/curiosity-stack)
+
+---
